@@ -2,16 +2,56 @@ syntax = "proto3";
 
 package produtos;
 
-option go_package = "/pb";
+message Product {
+  string id = 1;
+  string name = 2;
+  int32 votes = 3;
+}
 
-message CreateProductRequest {
+message CreateRequest {
   string name = 1;
 }
 
-message CreateProductResponse {
-  string name = 1;
+message CreateResponse {
+  string id = 1;
+  string name = 2;
+  int32 votes  = 3;
+}
+
+message ListRequest{}
+
+message ListResponse {
+  repeated Product products = 1;
+}
+
+message GetOneRequest {
+  string ID = 1;
+}
+
+message GetOneResponse {
+  Product product = 1;
+}
+
+message UpvoteRequest {
+  string id = 1;
+}
+
+message UpvoteResponse {
+  Product product = 1;
+}
+
+message DownvoteRequest {
+  string id =1;
+}
+
+message DownvoteResponse {
+  Product product = 1;
 }
 
 service ProductService {
-  rpc CreateProduct(CreateProductRequest) returns (CreateProductResponse){}
+  rpc Create(CreateRequest) returns (CreateResponse){}
+  rpc List(ListRequest) returns(ListResponse){}
+  rpc GetOne(GetOneRequest) returns (GetOneResponse){}
+  rpc Upvote(UpvoteRequest) returns (UpvoteResponse){}
+  rpc Downvote(DownvoteRequest) returns (DownvoteResponse){}
 }
