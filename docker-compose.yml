@@ -4,7 +4,7 @@ services:
   mongo:
     image: mongo:5.0.9-focal
     ports:
-      - 27017:27017
+      - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: admin
@@ -16,7 +16,7 @@ services:
   mongo-express:
     image: mongo-express:1.0.0-alpha
     ports:
-      - 8081:8081
+      - "8081:8081"
     environment:
       ME_CONFIG_BASICAUTH_USERNAME: admin
       ME_CONFIG_BASICAUTH_PASSWORD: admin
@@ -33,7 +33,7 @@ services:
       context: .
     image: store-server
     ports:
-      - 50051:50051
+      - "50051:50051"
     environment:
       PORT: 50051
       MONGO_URI: mongodb://admin:admin@mongo:27017
