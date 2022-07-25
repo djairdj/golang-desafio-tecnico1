@@ -1,7 +1,7 @@
 package entity
 
 type Product struct {
-	ID    string
-	Name  string
-	Votes int32
+	ID    string `bson:"_id"`
+	Name  string `bson:"name"`
+	Votes int32  `bson:"votes"`
 }
