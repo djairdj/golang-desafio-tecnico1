@@ -1,4 +1,4 @@
-package produto
+package product
 
 import (
 	"context"
